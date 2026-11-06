@@ -3,13 +3,13 @@ services:
     name: economic-surveyer-api
     runtime: python
     plan: free
-    buildCommand: pip install -r requirements.txt && python -m backend.ingest
+    buildCommand: pip install -r requirements.txt && python -m backend.ingest && python -c "from backend.retrieval import get_retriever; get_retriever()"
     startCommand: uvicorn backend.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/health
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.9
       - key: GEMINI_API_KEY
         sync: false
       - key: GEMINI_MODEL
-        value: gemini-3.8-flash
-
+        value: gemini-3.5-flash-lite
