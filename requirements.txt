@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+pdfplumber
+rank-bm25
+fastembed
+numpy
+google-genai
+python-dotenv
